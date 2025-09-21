@@ -19,7 +19,7 @@ public class FirestoreService {
 		
 		try {
 			
-			FileInputStream serviceAccount = new FileInputStream("C:\\Users\\91954\\Downloads\\firebaseServiceAccountKey.json");
+			FileInputStream serviceAccount = new FileInputStream("firebaseServiceAccountKey.json");
 			FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(GoogleCredentials.fromStream(serviceAccount))
 					.build();
 			return FirebaseApp.initializeApp(options);
