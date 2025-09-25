@@ -77,9 +77,20 @@ Edit src/main/resources/application.properties:
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
 spring.mail.username=your_email@gmail.com
-spring.mail.password=16 char app key such as abcd efgh ijkl mnop
+spring.mail.password= 16 char app key such as abcd efgh ijkl mnop
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
+redis.password= your redis db password
 ```
 
-You can get the app key by navigating to google myaccount settings->search app passwords->give an app name-> create and copy the key
+#### Getting Keys/Passwords for Email, DB, etc.
+Gmail 16 char App Key: You can get the app key by navigating to google myaccount settings->search app passwords->give an app name-> create and copy the key
+
+Redis Password: You can create a free db on [Redis](https://redis.io/). Once your db is created, click on the "Connect using Redis CLI, Client, or Insight" button. There you will be able to view your password (view/hide it using eye icon)
+
+## ⚠️ **NOTE:**  
+**🚫 DO NOT PUSH** the changes made in `application.properties`, `RedisConfig`, and `FirestoreService`.  
+🔒 _Keep your secrets safe!_ 🔒
+
+## 🚀 Live Demo  
+🎉 The project is now LIVE! Check it out here: [HacktoberBlog Deployment](https://springbootbackend-onuz.onrender.com) 🌟  
