@@ -1,7 +1,5 @@
 HELP.md
 target/
-src/main/resources/
-src/main/java/com/hacktober/blog/config/FirestoreService.java
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
