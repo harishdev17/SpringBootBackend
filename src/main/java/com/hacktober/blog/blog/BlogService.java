@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.hacktober.blog.notification.CommentNotificationService;
 
 @Service
 public class BlogService {
 
     private static final String COLLECTION_NAME = "blogs";
+    @Autowired
+    private CommentNotificationService commentNotificationService;
 
     /** Create a new blog */
     public String create(Blog blog) throws InterruptedException, ExecutionException {
@@ -81,6 +85,12 @@ public class BlogService {
         blog.setComments(comments);
 
         ApiFuture<WriteResult> result = docRef.set(blog);
+        try {
+            commentNotificationService.notifyOwnerOfNewComment(blogId, blog, username, commentText);
+        } catch (Exception ex) {
+        System.err.println("Failed to schedule comment notification: " + ex.getMessage());
+        }
+        
         return result.get().getUpdateTime().toString();
     }
     
