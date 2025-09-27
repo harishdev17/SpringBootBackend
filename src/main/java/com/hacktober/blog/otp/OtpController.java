@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/otp")
+@CrossOrigin("*")
 public class OtpController {
 
     @Autowired

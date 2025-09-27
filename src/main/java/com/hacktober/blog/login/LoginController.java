@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/login")
+@CrossOrigin("*")
 public class LoginController {
 
     @Autowired

@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/mail")
+@CrossOrigin("*")
 public class EmailController {
 	
     private final EmailService emailService;
