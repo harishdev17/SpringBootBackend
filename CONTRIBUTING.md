@@ -41,7 +41,6 @@ Before running the project or tests, set the environment variables that match th
 ⚠️ Do not commit secrets to GitHub. Use environment variables or a `.env` file (gitignored).
 
 
-
 ### 6. 🔨 Build the project
 ```
 mvn clean install
