@@ -94,12 +94,12 @@ Redis Password: You can create a free db on [Redis](https://redis.io/). Once you
 To run the project, you must provide your secrets as environment variables.  
 These are used in `application.properties` via Spring's placeholder system:
 
-| Variable Name              | Description                                   | Example Value                  |
-|-----------------------------|-----------------------------------------------|--------------------------------|
-| `MAIL_USERNAME`             | Your email for sending welcome emails.        | `your_email@gmail.com`         |
-| `MAIL_PASSWORD`             | Your 16-char app key for the email account.   | `abcd efgh ijkl mnop`          |
-| `REDIS_PASSWORD`            | The password for your Redis database.         | `yourRedisDbPassword123`       |
-| `FIREBASE_SERVICE_KEY_PATH` | Absolute path to Firebase Service JSON file.  | `/home/user/secrets/firebase.json` |
+| Variable Name                   | Description                                   | Example Value                  |
+|---------------------------------|-----------------------------------------------|--------------------------------|
+| `spring.mail.username`          | Your email for sending welcome emails.        | `your_email@gmail.com`         |
+| `spring.mail.password`          | Your 16-char app key for the email account.   | `abcd efgh ijkl mnop`          |
+| `redis.password`                | The password for your Redis database.         | `yourRedisDbPassword123`       |
+
 
 ## ⚠️ **NOTE:**  
 **🚫 DO NOT PUSH** the changes made in `application.properties`, `RedisConfig`, and `FirestoreService`.  
