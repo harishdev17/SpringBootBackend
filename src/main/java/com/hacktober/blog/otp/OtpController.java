@@ -41,6 +41,6 @@ public class OtpController {
 
     	// Verify OTP using OtpService
     	// Return appropriate response to frontend
-        return response;
+        return null;
     }
 }
