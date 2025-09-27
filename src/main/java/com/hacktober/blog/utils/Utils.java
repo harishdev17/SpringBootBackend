@@ -1,18 +1,19 @@
 package com.hacktober.blog.utils;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Utils {
 
+    public static BCryptPasswordEncoder bCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
     // Encode password to Base64
     public static String encode(String password) {
-        return Base64.getEncoder().encodeToString(password.getBytes(StandardCharsets.UTF_8));
+        return bCryptPasswordEncoder().encode(password);
     }
 
     // Decode password (if needed for verification)
-    public static String decode(String encodedPassword) {
-        byte[] decodedBytes = Base64.getDecoder().decode(encodedPassword);
-        return new String(decodedBytes, StandardCharsets.UTF_8);
+    public static boolean match(String password, String encodedPassword) {
+        return bCryptPasswordEncoder().matches(password, encodedPassword);
     }
 }
