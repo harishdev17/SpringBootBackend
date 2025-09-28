@@ -9,9 +9,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/otp")
 @CrossOrigin("*")
+@Tag(name = "One Time Password", description = "Endpoints for generating and validating OTP codes")
 public class OtpController {
 
     @Autowired
@@ -24,6 +28,7 @@ public class OtpController {
      * Generate OTP and send it to the provided email.
      */
     @PostMapping("/generate")
+    @Operation(summary = "Generate OTP", description = "Create a new OTP code for the provided email and send it via email.")
     public Map<String, Object> generateOtp(@RequestParam String email) {
 
         // Generate OTP using OtpService
@@ -37,6 +42,7 @@ public class OtpController {
      * Verify OTP for a given email.
      */
     @PostMapping("/verify")
+    @Operation(summary = "Verify OTP", description = "Validate that the submitted OTP matches the generated token for the email.")
     public Map<String, Object> verifyOtp(@RequestParam String email,
                                          @RequestParam String otp) {
 
