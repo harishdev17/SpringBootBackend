@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/otp")
+@CrossOrigin("*")
 public class OtpController {
 
     @Autowired
@@ -41,6 +42,6 @@ public class OtpController {
 
     	// Verify OTP using OtpService
     	// Return appropriate response to frontend
-        return response;
+        return null;
     }
 }

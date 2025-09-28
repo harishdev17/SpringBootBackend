@@ -27,7 +27,6 @@ public class LoginService {
         }
 
         // Encrypt the incoming password and compare
-        String encodedInputPassword = Utils.encode(password);
-        return encodedInputPassword.equals(user.getPassword());
+        return Utils.match(password, user.getPassword());
     }
 }

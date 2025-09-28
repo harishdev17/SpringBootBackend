@@ -99,7 +99,7 @@ public class UserService {
 	    /** Add or remove username from usernames array */
 	    public String updateUsernames(String username, boolean add) throws InterruptedException, ExecutionException {
 	        Firestore db = FirestoreClient.getFirestore();
-	        DocumentReference docRef = db.collection(COLLECTION_NAME).document(USERNAMES_DOC);
+	        DocumentReference docRef = db.collection("usernames").document("usernames");
 
 	        List<String> currentUsernames = getAllUsernames();
 	        if (add) {
