@@ -1,5 +1,7 @@
 package com.hacktober.blog.email;
 
+import com.hacktober.blog.utils.ApiResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,8 +21,9 @@ public class EmailController {
 
     @PostMapping("/send")
     @Operation(summary = "Send email", description = "Dispatch an email message using the configured SMTP provider.")
-    public String sendMail(@RequestBody EmailRequest request) {
-        emailService.sendEmail(request.to, request.subject, request.body);
-        return "Email sent successfully to " + request.to;
+    public ResponseEntity<ApiResponse<String>> sendMail(@RequestBody EmailRequest request) {
+        emailService.sendEmail(request.getTo(), request.getSubject(), request.getBody());
+        String message = "Email sent successfully to " + request.getTo();
+        return ResponseEntity.ok(ApiResponse.success(message, "Email sent successfully"));
     }
 }
