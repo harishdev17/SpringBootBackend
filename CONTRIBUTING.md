@@ -99,3 +99,11 @@ Once your PR is ready:
 
 
 
+### Translating docs (new)
+
+We welcome translators! To help organize translation work:
+
+- Claim or open issues labeled `translation`.
+- Follow the rules in `TRANSLATIONS.md`.
+- Mark machine-generated PRs with the label `machine-translation`.
+- Request native-speaker reviewers before merging.
