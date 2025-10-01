@@ -8,18 +8,27 @@ jobs:
   translate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with: python-version: '3.11'
-      - run: pip install deep-translator
-      - run: python .github/scripts/auto_translate.py
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install deep-translator
+
+      - name: Run translation script
+        run: python .github/scripts/auto_translate.py
         env:
           TARGET_LANGS: "hi,es,fr"
-      - name: Create PR
+
+      - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(docs): add machine-translated docs"
           branch: translation/auto
           title: "Auto: add machine-translated docs"
-          body: "Machine-generated translations. Please review."
+          body: "Machine-generated translations. Please review and refine."
