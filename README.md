@@ -38,9 +38,23 @@ src/
 └── application.properties
 ```
 
-
 ---
 
+## 📘 API Documentation
+
+Interactive API documentation is available out of the box thanks to Swagger UI and the generated OpenAPI specification.
+
+1. Run the application locally:
+
+```bash
+./mvnw spring-boot:run
+```
+
+2. Open [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) in your browser to explore and try the endpoints.
+
+The raw OpenAPI document can be downloaded from [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs) for integration with other tools.
+
+---
 ## 🚀 Getting Started
 
 ### 1. Prerequisites
