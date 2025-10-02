@@ -1,6 +1,9 @@
 package com.hacktober.blog.login;
 
+import com.hacktober.blog.exceptions.UnauthorizedException;
+import com.hacktober.blog.utils.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -21,20 +24,20 @@ public class LoginController {
 
     @PostMapping
     @Operation(summary = "Authenticate user", description = "Validate a username and password against stored credentials.")
-    public Map<String, Object> login(@RequestParam String username,
+    public ResponseEntity<ApiResponse<Map<String, Object>>> login(@RequestParam String username,
                                      @RequestParam String password)
             throws InterruptedException, ExecutionException {
 
         boolean success = loginService.login(username, password);
-        Map<String, Object> response = new HashMap<>();
-        response.put("username", username);
-        response.put("login", success);
+        Map<String, Object> data = new HashMap<>();
+        data.put("username", username);
+        data.put("login", success);
 
         if (success) {
-            response.put("message", "Login successful");
+            data.put("message", "Login successful");
+            return ResponseEntity.ok(ApiResponse.success(data, "Login successful"));
         } else {
-            response.put("message", "Invalid username or password");
+            throw new UnauthorizedException("Invalid username or password");
         }
-        return response;
     }
 }
