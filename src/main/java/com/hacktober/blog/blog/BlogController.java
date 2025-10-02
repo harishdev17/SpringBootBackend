@@ -51,8 +51,8 @@ public class BlogController {
     
     /** Get all blogs by username */
     @GetMapping("/user/{username}")
-    public List<Blog> getBlogsByUsername(@PathVariable String username)
     @Operation(summary = "List user blogs", description = "Retrieve all blogs authored by the specified user.")
+    public List<Blog> getBlogsByUsername(@PathVariable String username)
             throws InterruptedException, ExecutionException {
         return blogService.getBlogsByUsername(username);
     }
